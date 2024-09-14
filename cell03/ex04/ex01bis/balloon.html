@@ -22,36 +22,45 @@
 </style>
 <body>
     <div class="balloon"></div>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
     <script>
-        const balloon = document.querySelector('.balloon');
-        const colors = ['red', 'green', 'blue']; 
-        let colorIndex = 0; 
-        let size = 200; 
+        const $balloon = $('.balloon');  
+        const colors = ['red', 'green', 'blue'];
+        let colorIndex = 0;
+        let size = 200;
 
-        balloon.addEventListener('click', () => {
+        $balloon.on('click', function () {
             size += 10;
             if (size > 420) {
                 size = 200;
-                
             }
-            balloon.style.width = `${size}px`;
-            balloon.style.height = `${size}px`;
-            colorIndex = (colorIndex + 1) % colors.length;
-            balloon.style.backgroundColor = colors[colorIndex];
     
+            $balloon.css({
+                width: `${size}px`,
+                height: `${size}px`,
+            });
+    
+            colorIndex = (colorIndex + 1) % colors.length;
+            $balloon.css({
+                backgroundColor: colors[colorIndex]
+            });
         });
-
-        balloon.addEventListener('mouseleave', () => {
+    
+        $balloon.on('mouseleave', function () {
             size -= 5;
             if (size < 200) {
-                size = 200; 
+                size = 200;
             }
-            balloon.style.width = `${size}px`;
-            balloon.style.height = `${size}px`;
-            colorIndex = (colorIndex - 1 + colors.length) % colors.length; 
-            balloon.style.backgroundColor = colors[colorIndex];
+    
+            $balloon.css({
+                width: `${size}px`,
+                height: `${size}px`,
+                backgroundColor: colors[(colorIndex - 1 + colors.length) % colors.length]
+            });
+    
+            colorIndex = (colorIndex - 1 + colors.length) % colors.length;
         });
     </script>
+    
 </body>
 </html>
