@@ -18,7 +18,7 @@
             padding: 10px;
         }
         button[type="submit"] {
-            padding: 10px 10px;
+            padding: 10px 20px;
             cursor: pointer;
         }
     </style>
@@ -37,13 +37,14 @@
         <button type="submit">Try me!</button>
     </form>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        document.getElementById('calculatorForm').addEventListener('submit', function(event) {
+        $('#calculatorForm').on('submit', function(event) {
             event.preventDefault();
 
-            const leftMember = parseInt(document.getElementById('leftMember').value);
-            const rightMember = parseInt(document.getElementById('rightMember').value);
-            const operator = document.getElementById('operator').value;
+            const leftMember = parseInt($('#leftMember').val());
+            const rightMember = parseInt($('#rightMember').val());
+            const operator = $('#operator').val();
 
             if (isNaN(leftMember) || isNaN(rightMember) || leftMember < 0 || rightMember < 0) {
                 alert('Error :(');
